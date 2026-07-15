@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ijiola Muhammed Abiodun (MOTTG) — Data Analyst Portfolio</title>
+<meta name="description" content="Data Analyst — turning raw data into insights businesses can act on, using SQL, Python, Excel, and Power BI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #2455F0;
+    --blue-dark: #1638B0;
+    --blue-light: #5C8DFF;
+    --wash: #F4F7FF;
+    --ink: #0B1739;
+    --slate: #5B6472;
+    --line: #E6EAF3;
+    --white: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--ink);
+    background: var(--white);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, .logo {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  a { text-decoration: none; color: inherit; }
+  ul { list-style: none; }
+  img { max-width: 100%; display: block; }
+
+  .wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  section { padding: 96px 0; }
+
+  .eyebrow {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 14px;
+  }
+
+  /* ---------- Reveal animation ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* ---------- Nav ---------- */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 18px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-weight: 800;
+    font-size: 19px;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+  }
+  .logo span { color: var(--blue); }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .nav-links a { color: var(--slate); transition: color 0.15s ease; }
+  .nav-links a:hover { color: var(--blue); }
+
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 6px;
+  }
+  .nav-toggle span {
+    width: 22px;
+    height: 2px;
+    background: var(--ink);
+    border-radius: 2px;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    padding: 100px 0 90px;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image: radial-gradient(circle, rgba(36,85,240,0.14) 1.6px, transparent 1.6px);
+    background-size: 26px 26px;
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 85%);
+    mask-image: linear-gradient(to bottom, black 0%, transparent 85%);
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 56px;
+    align-items: center;
+  }
+
+  .hero h1 {
+    font-size: clamp(34px, 5vw, 48px);
+    font-weight: 800;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 18px;
+  }
+
+  .hero .tagline {
+    font-size: 18px;
+    color: var(--slate);
+    max-width: 480px;
+    margin-bottom: 36px;
+  }
+
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--blue);
+    color: var(--white);
+    font-weight: 600;
+    font-size: 15px;
+    padding: 14px 28px;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(36,85,240,0.25);
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+  .cta-btn:hover {
+    background: var(--blue-dark);
+    transform: translateY(-2px);
+  }
+
+  .avatar {
+    position: relative;
+    width: 260px;
+    height: 260px;
+    margin: 0 auto;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(36,85,240,0.18);
+    border: 6px solid var(--white);
+    outline: 1px solid var(--line);
+  }
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .avatar-fallback {
+    display: none;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 64px;
+    color: var(--white);
+    background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+  }
+
+  @media (max-width: 780px) {
+    .hero-inner { grid-template-columns: 1fr; text-align: center; }
+    .hero .tagline { margin-left: auto; margin-right: auto; }
+    .avatar { order: -1; width: 180px; height: 180px; }
+  }
+
+  /* ---------- About ---------- */
+  .about-inner {
+    max-width: 680px;
+  }
+  .about-inner h2 {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .about-inner p {
+    color: var(--slate);
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+
+  section.alt { background: var(--wash); }
+
+  /* ---------- Skills ---------- */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 16px;
+    margin-top: 36px;
+  }
+
+  .skill-badge {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .skill-badge:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(36,85,240,0.1);
+  }
+
+  .skill-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    background: var(--wash);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--blue);
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .skill-name {
+    font-weight: 600;
+    font-size: 14.5px;
+    color: var(--ink);
+  }
+
+  /* ---------- Projects ---------- */
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 40px;
+  }
+  .section-head h2 {
+    font-size: 30px;
+    font-weight: 700;
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  @media (max-width: 780px) {
+    .project-grid { grid-template-columns: 1fr; }
+  }
+
+  .project-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 30px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 34px rgba(36,85,240,0.12);
+  }
+
+  .project-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .project-card p {
+    color: var(--slate);
+    font-size: 14.5px;
+    margin-bottom: 18px;
+  }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  .tag {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 11px;
+    border-radius: 20px;
+    background: var(--wash);
+    color: var(--blue);
+  }
+
+  .project-link {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--blue);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .project-link:hover { text-decoration: underline; }
+
+  /* ---------- Contact ---------- */
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: flex-start;
+  }
+  @media (max-width: 780px) {
+    .contact-inner { grid-template-columns: 1fr; }
+  }
+
+  .contact-inner h2 { font-size: 30px; font-weight: 700; margin-bottom: 16px; }
+  .contact-inner > div > p { color: var(--slate); margin-bottom: 28px; }
+
+  .social-row { display: flex; gap: 14px; }
+  .social-btn {
+    width: 46px;
+    height: 46px;
+    border-radius: 10px;
+    background: var(--wash);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--blue);
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+  .social-btn:hover { background: var(--blue); color: var(--white); transform: translateY(-2px); }
+
+  form { display: flex; flex-direction: column; gap: 16px; }
+
+  .field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--ink);
+  }
+  .field input,
+  .field textarea {
+    width: 100%;
+    padding: 13px 14px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14.5px;
+    background: var(--white);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .field input:focus,
+  .field textarea:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(36,85,240,0.12);
+  }
+  .field textarea { min-height: 120px; resize: vertical; }
+
+  .submit-btn {
+    align-self: flex-start;
+    background: var(--blue);
+    color: var(--white);
+    border: none;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 13px 28px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+  .submit-btn:hover { background: var(--blue-dark); transform: translateY(-2px); }
+
+  .form-note {
+    font-size: 13px;
+    color: var(--slate);
+    margin-top: 4px;
+  }
+  .form-note a { color: var(--blue); font-weight: 600; }
+
+  /* ---------- Footer ---------- */
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 32px 0;
+  }
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 13.5px;
+    color: var(--slate);
+  }
+  .footer-inner .social-row { gap: 10px; }
+  .footer-inner .social-btn { width: 36px; height: 36px; }
+
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--blue);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  @media (max-width: 780px) {
+    .nav-links { display: none; }
+    .nav-toggle { display: flex; }
+    .nav-links.open {
+      display: flex;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--white);
+      flex-direction: column;
+      padding: 20px 28px;
+      gap: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+    section { padding: 64px 0; }
+    .section-head { flex-direction: column; align-items: flex-start; gap: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#top" class="logo">MOTTG<span>.</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<section class="hero" id="top">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="wrap hero-inner">
+    <div>
+      <h1 class="reveal">Ijiola Muhammed Abiodun</h1>
+      <p class="tagline reveal">Data Analyst — Solving business problems with data, across any industry.</p>
+      <a href="#projects" class="cta-btn reveal">View my work →</a>
+    </div>
+    <div class="avatar reveal">
+      <img src="assets/profile.jpg" alt="Ijiola Muhammed Abiodun"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="avatar-fallback">IA</div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about-inner">
+    <div class="eyebrow reveal">About</div>
+    <h2 class="reveal">Turning raw data into decisions</h2>
+    <p class="reveal">
+      Data analyst who turns raw, messy datasets into insights businesses can act on —
+      using SQL, Excel, and Python for analysis, and Power BI to make the findings clear
+      at a glance.
+    </p>
+    <p class="reveal">
+      I care about getting to the insight that actually changes a decision, not just
+      producing a chart for its own sake. Comfortable working across industries,
+      wherever there's a question worth answering with data.
+    </p>
+  </div>
+</section>
+
+<section id="skills" class="alt">
+  <div class="wrap">
+    <div class="eyebrow reveal">Skills</div>
+    <h2 class="reveal">Tools I work with</h2>
+    <div class="skills-grid">
+      <div class="skill-badge reveal">
+        <div class="skill-icon" style="background:transparent;">
+          <svg viewBox="0 0 24 24" width="26" height="26" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="20" height="20" rx="4" fill="#217346"/>
+            <rect x="6" y="6.5" width="4.2" height="4.2" fill="#ffffff"/>
+            <rect x="11.4" y="6.5" width="4.2" height="4.2" fill="#ffffff" opacity="0.75"/>
+            <rect x="6" y="11.9" width="4.2" height="4.2" fill="#ffffff" opacity="0.75"/>
+            <rect x="11.4" y="11.9" width="4.2" height="4.2" fill="#ffffff"/>
+            <rect x="16.8" y="6.5" width="1.4" height="9.6" fill="#ffffff" opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="skill-name">Microsoft Excel</div>
+      </div>
+      <div class="skill-badge reveal">
+        <div class="skill-icon" style="background:transparent;">
+          <svg viewBox="0 0 24 24" width="26" height="26" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 6c0-1.66 3.58-3 8-3s8 1.34 8 3v12c0 1.66-3.58 3-8 3s-8-1.34-8-3V6z" fill="#00758F"/>
+            <ellipse cx="12" cy="6" rx="8" ry="3" fill="#00A0D2"/>
+            <ellipse cx="12" cy="12" rx="8" ry="2.6" fill="none" stroke="#ffffff" stroke-width="0.8" opacity="0.5"/>
+            <ellipse cx="12" cy="16.5" rx="8" ry="2.6" fill="none" stroke="#ffffff" stroke-width="0.8" opacity="0.5"/>
+          </svg>
+        </div>
+        <div class="skill-name">MySQL</div>
+      </div>
+      <div class="skill-badge reveal">
+        <div class="skill-icon" style="background:transparent;">
+          <svg viewBox="0 0 24 24" width="26" height="26" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2.2c-3.1 0-5.1 1.1-5.1 4v2.9h5.1v1H5.4c-2 0-3.1 1.6-3.1 4.3s1.1 4.3 3.1 4.3h2v-2.9c0-2.1 1.1-3.4 3.1-3.4h4c2 0 3.4-1.2 3.4-3.4V6.2c0-2.1-2.1-4-5.9-4z" fill="#3776AB"/>
+            <path d="M12 21.8c3.1 0 5.1-1.1 5.1-4v-2.9h-5.1v-1h6.6c2 0 3.1-1.6 3.1-4.3s-1.1-4.3-3.1-4.3h-2v2.9c0 2.1-1.1 3.4-3.1 3.4h-4c-2 0-3.4 1.2-3.4 3.4v3.8c0 2.1 2.1 4 5.9 4z" fill="#FFD43B"/>
+          </svg>
+        </div>
+        <div class="skill-name">Python</div>
+      </div>
+      <div class="skill-badge reveal">
+        <div class="skill-icon" style="background:transparent;">
+          <svg viewBox="0 0 24 24" width="26" height="26" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="12" width="4.2" height="9" rx="1" fill="#F2C811"/>
+            <rect x="9.9" y="7" width="4.2" height="14" rx="1" fill="#F2C811" opacity="0.85"/>
+            <rect x="16.8" y="3" width="4.2" height="18" rx="1" fill="#F2C811" opacity="0.65"/>
+          </svg>
+        </div>
+        <div class="skill-name">Power BI</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow reveal">Projects</div>
+        <h2 class="reveal">Featured work</h2>
+      </div>
+    </div>
+    <div class="project-grid">
+      <article class="project-card reveal">
+        <h3>HR Workforce Analytics</h3>
+        <p>
+          A normalized 10-table MySQL database modeling the full employee lifecycle —
+          headcount, promotions, attendance, performance, recruitment, and Nigerian
+          statutory payroll (PAYE, PENCOM, NHF, NSITF, ITF) — connected to a Power BI
+          dashboard for turnover and compensation-cost analysis.
+        </p>
+        <div class="tags">
+          <span class="tag">MySQL</span>
+          <span class="tag">Power BI</span>
+          <span class="tag">SQL Views</span>
+        </div>
+        <a class="project-link" href="https://github.com/muhammed2624/HR-Analytics-Dashboard" target="_blank" rel="noopener">
+          View repository →
+        </a>
+      </article>
+
+      <article class="project-card reveal">
+        <h3>Stock Market Investment Analysis</h3>
+        <p>
+          Analysis of 120 US stocks from January 2020 to February 2026, using MySQL for
+          data storage and Python for processing, with an interactive Power BI dashboard
+          exported as a standalone HTML version for direct browser viewing.
+        </p>
+        <div class="tags">
+          <span class="tag">MySQL</span>
+          <span class="tag">Python</span>
+          <span class="tag">Power BI</span>
+        </div>
+        <a class="project-link" href="https://github.com/muhammed2624/Stock-Market-Analysis" target="_blank" rel="noopener">
+          View repository →
+        </a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="alt">
+  <div class="wrap contact-inner">
+    <div>
+      <div class="eyebrow reveal">Contact</div>
+      <h2 class="reveal">Let's work together</h2>
+      <p class="reveal">
+        Have a data problem worth solving, or just want to connect? Reach out —
+        I read every message.
+      </p>
+      <div class="social-row reveal">
+        <a class="social-btn" href="https://github.com/muhammed2624" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.04-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.21.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23.96-.27 1.98-.4 3-.41 1.02.01 2.04.14 3 .41 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22 0 1.61-.01 2.9-.01 3.29 0 .32.22.7.83.58C20.56 21.79 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        </a>
+        <a class="social-btn" href="https://www.linkedin.com/in/muhammed-ijiola-76a06533b" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.8 0 0 .78 0 1.75v20.5C0 23.22.8 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.75V1.75C24 .78 23.2 0 22.22 0z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <div class="field">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" required></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Send message</button>
+      <p class="form-note">
+        Or email me directly at <a href="mailto:muhammedijiola@gmail.com">muhammedijiola@gmail.com</a>
+      </p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>© 2026 Ijiola Muhammed Abiodun (MOTTG). All rights reserved.</span>
+    <div class="social-row">
+      <a class="social-btn" href="https://github.com/muhammed2624" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.04-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.21.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23.96-.27 1.98-.4 3-.41 1.02.01 2.04.14 3 .41 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22 0 1.61-.01 2.9-.01 3.29 0 .32.22.7.83.58C20.56 21.79 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+      </a>
+      <a class="social-btn" href="https://www.linkedin.com/in/muhammed-ijiola-76a06533b" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.8 0 0 .78 0 1.75v20.5C0 23.22.8 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.75V1.75C24 .78 23.2 0 22.22 0z"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Scroll-triggered reveal animation
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
